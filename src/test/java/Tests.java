@@ -20,17 +20,33 @@ public class Tests {
     }
 
     @Test(expected = Exception.class)
-    public void exceptionShouldBeThrownByMyMultiplication() throws Exception {
-        String firstFactor = "wqf";
+    public void exceptionShouldBeThrownByMyMultiplicationWhenSecondFactorIsWrong() throws Exception {
+        String firstFactor = "12345678901234567890";
         String secondFactor = "qf";
 
         myMultiplication.multiply(firstFactor, secondFactor);
     }
 
     @Test(expected = Exception.class)
-    public void exceptionShouldBeThrownByBigIntegerMultiplication() throws Exception {
+    public void exceptionShouldBeThrownByMyMultiplicationWhenFirstFactorIsWrong() throws Exception {
         String firstFactor = "wqf";
+        String secondFactor = "11111111111111111111";
+
+        myMultiplication.multiply(firstFactor, secondFactor);
+    }
+
+    @Test(expected = Exception.class)
+    public void exceptionShouldBeThrownByBigIntegerMultiplicationWhenSecondFactorIsWrong() throws Exception {
+        String firstFactor = "12345678901234567890";
         String secondFactor = "qf";
+
+        bigIntegerMultiplication.multiply(firstFactor, secondFactor);
+    }
+
+    @Test(expected = Exception.class)
+    public void exceptionShouldBeThrownByBigIntegerMultiplicationWhenFirstFactorIsWrong() throws Exception {
+        String firstFactor = "wqf";
+        String secondFactor = "11111111111111111111";
 
         bigIntegerMultiplication.multiply(firstFactor, secondFactor);
     }

@@ -64,22 +64,14 @@ public class MyMultiplication {
     }
 
     private StringBuilder add(StringBuilder firstNumber, StringBuilder secondNumber) {
-        int biggerLength = firstNumber.length() > secondNumber.length() ? firstNumber.length() : secondNumber.length();
-
-        for (int i = 0; i < biggerLength - firstNumber.length(); i++) {
-            firstNumber.insert(0, "0");
-        }
-
-        for (int i = 0; i < biggerLength - secondNumber.length(); i++) {
-            secondNumber.insert(0, "0");
-        }
+        numberAlignment(firstNumber, secondNumber);
 
         int inMemory = 0;
         StringBuilder result = new StringBuilder();
 
-        for (int i = firstNumber.length() - 1, j = secondNumber.length() - 1; i >= 0 && j >= 0; i--, j--) {
+        for (int i = firstNumber.length() - 1; i >= 0; i--) {
             int digitOfFirstNumber = Character.digit(firstNumber.charAt(i), 10);
-            int digitOfSecondNumber = Character.digit(secondNumber.charAt(j), 10);
+            int digitOfSecondNumber = Character.digit(secondNumber.charAt(i), 10);
 
             String sum = Integer.toString(digitOfFirstNumber + digitOfSecondNumber + inMemory);
 
@@ -94,5 +86,17 @@ public class MyMultiplication {
         }
 
         return result;
+    }
+
+    private void numberAlignment(StringBuilder firstNumber, StringBuilder secondNumber) {
+        int biggerLength = firstNumber.length() > secondNumber.length() ? firstNumber.length() : secondNumber.length();
+
+        for (int i = 0; i < biggerLength - firstNumber.length(); i++) {
+            firstNumber.insert(0, "0");
+        }
+
+        for (int i = 0; i < biggerLength - secondNumber.length(); i++) {
+            secondNumber.insert(0, "0");
+        }
     }
 }
